@@ -1,0 +1,48 @@
+<div class="col mb-3">
+  <div class="col-md-12 mb-3 mt-3">
+    <button (click)="fileInput.click()" style="background-color: transparent; border: none;">
+      <img src="assets/product.png"  class="rounded-circle" width="200px" height="200px" />
+      <input hidden type="file" #fileInput >
+    </button>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <div class="col-md-12 mb-3">
+      <h2><i class="fas fa-info-circle blue-color"></i>&nbsp;Information du {{origin}}</h2>
+    </div>
+    <div class="col-md-12">
+      <form [formGroup]="newCltFrsForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Nom" formControlName="nom">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Prénom" formControlName="prenom">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="E-mail" formControlName="mail">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Téléphone" formControlName="numTel">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-12 text-right">
+    <button class="btn btn-danger mr-3" (click)="cancelClick()">
+      <i class="fas fa-ban"></i>&nbsp;
+      Annuler
+    </button>
+    <button class="btn btn-primary" (click)="onSubmit()">
+      <i class="fas fa-save"></i>&nbsp;
+      Enregistrer
+    </button>
+  </div>
+</div>
