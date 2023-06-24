@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,35 @@ import { Component, HostListener } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-first-project';
-  constructor() {}
+  idleTimeout = 600000; // 10 minutes (600000 milliseconds)
+  timeoutId: any;
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    /*localStorage.clear();*/
+    this.startInactivityTimer();
+      localStorage.clear();
   }
 
+  @HostListener('window:mousemove')
+  @HostListener('window:keydown')
+  onUserActivity(): void {
+    this.restartInactivityTimer();
+  }
+
+  startInactivityTimer(): void {
+    this.timeoutId = setTimeout(() => {
+      this.logoutUser();
+    }, this.idleTimeout);
+  }
+
+  restartInactivityTimer(): void {
+    clearTimeout(this.timeoutId);
+    this.startInactivityTimer();
+  }
+
+  logoutUser(): void {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
 }

@@ -17,7 +17,8 @@ export class ArticlesComponent implements OnInit {
 
    ngOnInit(): void {
     this.findAllArticle();
-  }
+     this.router.navigate(['articles']);
+   }
 
   nouvelArticle(): void {
     this.router.navigate(['newarticles']);
@@ -34,5 +35,8 @@ export class ArticlesComponent implements OnInit {
       }
     )
   }
+
+
+
 
 }

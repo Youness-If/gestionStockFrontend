@@ -26,23 +26,27 @@ export class DetailsArticlesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.router.navigate(['articles']);
+
   }
 
   modifierArticle(): void {
     this.router.navigate(['newarticles', this.article.id]);
   }
-  confirmerEtSupprimerArticle(): void{
-      if (this.article.id) {
-        console.log("article id : " + this.article.id);
-        this.articleService.deleteArticle(this.article.id)
-        .subscribe((responce : any) => {
+  confirmerEtSupprimerArticle(): void {
+    if (this.article.id) {
+      console.log("article id : " + this.article.id);
+      this.articleService.deleteArticle(this.article.id)
+        .subscribe((responce: any) => {
           console.log(responce)
           this.suppressionResult.emit('success');
-        }, (error : any) => {
+          this.article = {};// Réinitialiser l'objet article
+          this.router.navigate(['articles']);
+        }, (error: any) => {
           console.log(error)
         });
-        this.router.navigate(['articles']);
-      }
+    }
+    this.router.navigate(['articles']);
 
   }
 
