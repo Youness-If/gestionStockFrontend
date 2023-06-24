@@ -4,17 +4,42 @@
       <h1>Liste des fournisseurs</h1>
     </div>
     <div class="col-md-4 text-right">
-     <app-button-action (clickEvent)="noveauFournissuer()"></app-button-action>
+      <app-button-action (clickEvent)="nouveauFournisseur()"></app-button-action>
     </div>
   </div>
   <div class="col m-3">
-   <!-- <div class="alert alert-danger" *ngIf="errorMsg">
+    <!--<div class="alert alert-danger" *ngIf="errorMsg">
       {{ errorMsg }}
     </div>-->
- <app-details-cl-frs></app-details-cl-frs>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Numéro de téléphone</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let fournisseur of fournisseurs">
+        <td>{{ fournisseur.id }}</td>
+        <td>{{ fournisseur.nom }}</td>
+        <td>{{ fournisseur.prenom }}</td>
+        <td>{{ fournisseur.mail }}</td>
+        <td>{{ fournisseur.numTel }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="modifierFournisseur(fournisseur.id!)">Modifier</button>
+          <button class="btn btn-danger btn-sm" (click)="supprimerFournisseur(fournisseur.id!)">Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <!--<div class="row mb-3" *ngIf="listFournisseur.length">-->
-    <div class=" col-md-12 text-center">
+  <div class="row mb-3" *ngIf="fournisseurs.length">
+    <div class="col-md-12 text-center">
       <app-pagination></app-pagination>
     </div>
   </div>
+</div>

@@ -3,47 +3,30 @@
     <img src="assets/product.png" width="100px" height="100px">
   </div>
 
-  <!--  Details article-->
+  <!--  Details client/fournisseur-->
   <div class="col-md-5 custom-border-right mb-1 mt-1 ">
     <div class="col">
       <div class="row">
         <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <div class="col-md-10"> nom </div>
+        <div class="col-md-10">{{ type === 'client' ? client?.nom : fournisseur?.nom }}</div>
       </div>
       <div class="row">
         <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <div class="col-md-10">prenom </div>
+        <div class="col-md-10">{{ type === 'client' ? client?.prenom : fournisseur?.prenom }}</div>
       </div>
       <div class="row">
         <div class="col-md-1"><i class="fas fa-phone-alt blue-color"></i></div>
-        <div class="col-md-10">numTel </div>
+        <div class="col-md-10">{{ type === 'client' ? client?.numTel : fournisseur?.numTel }}</div>
       </div>
     </div>
   </div>
 
-  <!--  details categorie-->
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-home blue-color"></i></div>
-        <div class="col-md-10"> clientFournisseur.adresse?.adresse1 &nbsp; clientFournisseur.adresse?.adresse2 </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-map-marker-alt blue-color"></i></div>
-        <div class="col-md-10"> clientFournisseur.adresse?.codePostale &nbsp; clientFournisseur.adresse?.ville </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-globe-europe blue-color"></i></div>
-        <div class="col-md-10"> clientFournisseur.adresse?.pays </div>
-      </div>
-    </div>
-  </div>
 
   <!--  boutons action-->
-  <div class="col-md-3 mb-1 mt-1 ">
+  <!--<div class="col-md-3 mb-1 mt-1 ">
     <div class="row">
       <div class="col-md-4">
-        <button type="button" class="btn btn-link">
+        <button type="button" class="btn btn-link" (click)="type === 'client' ? updateClient(client.id) : updateFournisseur(fournisseur.id)">
           <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
         </button>
       </div>
@@ -60,7 +43,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  &lt;!&ndash; Modal &ndash;&gt;
   <div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
        aria-labelledby="staticBackdropLabel"
        aria-hidden="true">
@@ -73,15 +56,15 @@
           </button>
         </div>
         <div class="modal-body">
-          Etes vous-sur de vouloir supprimer ce ?
+          Etes-vous sûr de vouloir supprimer ce ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             <i class="fas fa-ban"></i>&nbsp;Annuler</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="type === 'client' ? deleteClient(client.id) : deleteFournisseur(fournisseur.id)">
             <i class="fas fa-trash-alt"></i>&nbsp;Supprimer</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>

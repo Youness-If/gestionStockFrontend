@@ -25,6 +25,7 @@ export class CltFrsService {
     return this.httpClient.get<Client[]>(`${this.BASE_URL}/clients/all`);
   }
 
+
   deleteClient(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.BASE_URL}/clients/delete/${id}`);
   }
